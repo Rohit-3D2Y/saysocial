@@ -1,163 +1,118 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React from "react";
+import { useParams } from "react-router-dom";
 
-// Updated services data with tags as objects having name, image, and description
 const services = [
   {
     id: "production",
     title: "Production/Video",
     description:
       "Your website is like your digital handshake—it’s the first thing people notice about you online. Our Web Design & Development services are all about making that handshake firm, friendly, and unforgettable.",
-    tags: [
+    heroImage:
+      "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1200&q=80",
+    sections: [
       {
-        name: "Insta Reels",
-        image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=600&q=80",
-        description: "Short, engaging videos perfect for Instagram stories and reels.",
+        heading: "Instagram Reels",
+        items: [
+          { name: "Reel 1", image: "https://source.unsplash.com/600x400/?instagram,reel", description: "Engaging Instagram reel content." },
+          { name: "Reel 2", image: "https://source.unsplash.com/600x400/?social,video", description: "Trendy reels to capture attention." },
+          { name: "Reel 3", image: "https://source.unsplash.com/600x400/?reels,media", description: "Creative short videos." },
+          { name: "Reel 4", image: "https://source.unsplash.com/600x400/?short,video", description: "Quick content for Instagram." },
+        ],
       },
       {
-        name: "Brand films",
-        image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80",
-        description: "High-quality films that build your brand identity.",
-      },
-      {
-        name: "Campaigns",
-        image: "https://images.unsplash.com/photo-1497493292307-31c376b6e479?auto=format&fit=crop&w=600&q=80",
-        description: "Strategic marketing campaigns to reach your audience.",
-      },
-      {
-        name: "Exhibitions",
-        image: "https://images.unsplash.com/photo-1531306728371-4bd7523e12ff?auto=format&fit=crop&w=600&q=80",
-        description: "Showcasing your brand at events with impact.",
-      },
-      {
-        name: "Corporate Videos",
-        image: "https://images.unsplash.com/photo-1529400971008-f566de0e6dfc?auto=format&fit=crop&w=600&q=80",
-        description: "Professional videos for company promotion.",
-      },
-      {
-        name: "Ad Films",
-        image: "https://images.unsplash.com/photo-1532374382149-9822f06ff460?auto=format&fit=crop&w=600&q=80",
-        description: "Creative commercials that grab attention.",
+        heading: "Brand Films",
+        items: [
+          { name: "Film 1", image: "https://source.unsplash.com/600x400/?brand,film", description: "Showcase your brand identity." },
+          { name: "Film 2", image: "https://source.unsplash.com/600x400/?corporate,film", description: "High-quality corporate films." },
+          { name: "Film 3", image: "https://source.unsplash.com/600x400/?studio,shoot", description: "Studio-based professional films." },
+          { name: "Film 4", image: "https://source.unsplash.com/600x400/?ad,film", description: "Creative ad films." },
+        ],
       },
     ],
-    bg: "bg-[#e86294]",
   },
   {
     id: "graphic-design",
     title: "Graphic Design",
     description:
       "With our Digital Marketing services, you won’t just stand out—you’ll shine. We’ll help you show up where your customers are hanging out, always finding clever ways to boost your visibility and drive those sweet, sweet clicks.",
-    tags: [
+    heroImage:
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
+    sections: [
       {
-        name: "Insta posts",
-        image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
-        description: "Creative and eye-catching Instagram posts.",
+        heading: "Instagram Graphics",
+        items: [
+          { name: "Post 1", image: "https://source.unsplash.com/600x400/?instagram,post", description: "Creative Instagram posts." },
+          { name: "Grid 1", image: "https://source.unsplash.com/600x400/?instagram,grid", description: "Beautiful grid layouts." },
+          { name: "Post 2", image: "https://source.unsplash.com/600x400/?social,graphic", description: "Eye-catching designs." },
+          { name: "Post 3", image: "https://source.unsplash.com/600x400/?art,design", description: "Unique digital artwork." },
+        ],
       },
       {
-        name: "Insta grids",
-        image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80",
-        description: "Beautiful grid layouts that tell your brand story.",
-      },
-      {
-        name: "OOH Media",
-        image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80",
-        description: "Out-of-home advertising media design.",
-      },
-      {
-        name: "Branding Logo",
-        image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80",
-        description: "Unique logo designs that define your brand.",
-      },
-      {
-        name: "Festivals",
-        image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80",
-        description: "Festival-themed graphic creations.",
-      },
-      {
-        name: "Magazine",
-        image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80",
-        description: "Attractive layouts and designs for magazines.",
-      },
-      {
-        name: "Brochure",
-        image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=600&q=80",
-        description: "Professional brochure designs to promote your products.",
+        heading: "Branding & Print",
+        items: [
+          { name: "Logo", image: "https://source.unsplash.com/600x400/?logo,design", description: "Professional logo designs." },
+          { name: "Brochure", image: "https://source.unsplash.com/600x400/?brochure,design", description: "Corporate brochures." },
+          { name: "Magazine", image: "https://source.unsplash.com/600x400/?magazine,cover", description: "Stylish magazine layouts." },
+          { name: "Festival", image: "https://source.unsplash.com/600x400/?festival,design", description: "Festival-themed graphics." },
+        ],
       },
     ],
-    bg: "bg-[#fae0be]",
   },
   {
     id: "live-events",
     title: "Live Events",
     description:
       "Your brand is so much more than a logo—it’s your story, your personality, and your promise to customers. We bring your identity to life in a way that’s bold, beautiful, and 100% you.",
-    tags: [
+    heroImage:
+      "https://images.unsplash.com/photo-1531306728371-4bd7523e12ff?auto=format&fit=crop&w=1200&q=80",
+    sections: [
       {
-        name: "Logo Design",
-        image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80",
-        description: "Custom logos for your events and occasions.",
+        heading: "Weddings & Engagements",
+        items: [
+          { name: "Wedding", image: "https://source.unsplash.com/600x400/?wedding,event", description: "Elegant wedding visuals." },
+          { name: "Engagement", image: "https://source.unsplash.com/600x400/?engagement,party", description: "Beautiful engagement designs." },
+          { name: "Reception", image: "https://source.unsplash.com/600x400/?reception,event", description: "Classy reception coverage." },
+          { name: "Godh Bharai", image: "https://source.unsplash.com/600x400/?celebration,event", description: "Traditional event coverage." },
+        ],
       },
       {
-        name: "Weddings",
-        image: "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=600&q=80",
-        description: "Elegant wedding event graphics and coverage.",
-      },
-      {
-        name: "Exhibitions",
-        image: "https://images.unsplash.com/photo-1531306728371-4bd7523e12ff?auto=format&fit=crop&w=600&q=80",
-        description: "Dynamic exhibition event planning and design.",
-      },
-      {
-        name: "Events (navratri)",
-        image: "https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=600&q=80",
-        description: "Colorful and vibrant Navratri event coordination.",
-      },
-      {
-        name: "Godh Bharai",
-        image: "https://images.unsplash.com/photo-1532009324734-20a7a5813719?auto=format&fit=crop&w=600&q=80",
-        description: "Cultural celebration coverage and design.",
-      },
-      {
-        name: "Engagements",
-        image: "https://images.unsplash.com/photo-1514516872009-55e2bbbf1378?auto=format&fit=crop&w=600&q=80",
-        description: "Beautiful engagement event planning and visuals.",
+        heading: "Exhibitions & Festivals",
+        items: [
+          { name: "Navratri", image: "https://source.unsplash.com/600x400/?navratri,event", description: "Colorful Navratri celebrations." },
+          { name: "Exhibition", image: "https://source.unsplash.com/600x400/?exhibition,booth", description: "Dynamic exhibition planning." },
+          { name: "Live Shows", image: "https://source.unsplash.com/600x400/?concert,show", description: "Vibrant live shows." },
+          { name: "Corporate Event", image: "https://source.unsplash.com/600x400/?corporate,event", description: "Professional event coverage." },
+        ],
       },
     ],
-    bg: "bg-[#fafabf]",
   },
   {
     id: "web-development",
     title: "Website/App Development",
     description:
       "Got a brilliant app idea? Let’s make it a reality! Our apps are made with love (and a whole lot of coding).",
-    tags: [
+    heroImage:
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80",
+    sections: [
       {
-        name: "UI/UX for Website",
-        image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80",
-        description: "User-centric design for intuitive experiences.",
+        heading: "Web Development",
+        items: [
+          { name: "UI/UX", image: "https://source.unsplash.com/600x400/?ux,design", description: "Intuitive user experiences." },
+          { name: "Frontend", image: "https://source.unsplash.com/600x400/?frontend,code", description: "Responsive front-end apps." },
+          { name: "Backend", image: "https://source.unsplash.com/600x400/?backend,code", description: "Robust backend systems." },
+          { name: "Mobile Optimization", image: "https://source.unsplash.com/600x400/?mobile,app", description: "Smooth mobile experience." },
+        ],
       },
       {
-        name: "Custom App Development",
-        image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=600&q=80",
-        description: "Tailored applications for your business needs.",
-      },
-      {
-        name: "Mobile Optimization",
-        image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
-        description: "Optimizing performance for all mobile devices.",
-      },
-      {
-        name: "App Store Optimization",
-        image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80",
-        description: "Boost your app’s visibility in app stores.",
-      },
-      {
-        name: "Front-end development",
-        image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80",
-        description: "Building engaging and responsive front-ends.",
+        heading: "App Solutions",
+        items: [
+          { name: "Custom App", image: "https://source.unsplash.com/600x400/?app,development", description: "Tailored apps for businesses." },
+          { name: "App Store Optimization", image: "https://source.unsplash.com/600x400/?appstore,seo", description: "Boost app visibility." },
+          { name: "Cross-Platform", image: "https://source.unsplash.com/600x400/?crossplatform,app", description: "One code, all platforms." },
+          { name: "Progressive Web App", image: "https://source.unsplash.com/600x400/?pwa,app", description: "Installable web apps." },
+        ],
       },
     ],
-    bg: "bg-[#f6c2f4]",
   },
 ];
 
@@ -170,41 +125,50 @@ const ServiceDetail = () => {
   }
 
   return (
-    <div className="px-20 py-10">
-      <div className="flex flex-col">
-        <h1 className="text-[#e86294] text-xl brico mb-6">Your trusted brand on us</h1>
-        <div className="flex justify-between items-center mb-10">
-          <h2 className="text-5xl brico max-w-3xl">{service.title}</h2>
-          <div>circle circle</div>
+    <div className="w-full">
+      {/* HERO SECTION */}
+      <div
+        className="relative h-[40vh] w-full bg-cover bg-center"
+        style={{ backgroundImage: `url(${service.heroImage})` }}
+      >
+        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-6">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">{service.title}</h1>
+          <p className="max-w-2xl text-lg md:text-xl">{service.description}</p>
         </div>
+      </div>
 
-        <p className="mb-10 max-w-3xl">{service.description}</p>
-
-        <div className="flex flex-wrap gap-5 py-20 justify-center items-center">
-          {service.tags.map((tag, idx) => (
-            <div
-              key={idx}
-              className={`h-[600px] w-[23%] bg-gray-300 rounded-3xl flex flex-col overflow-hidden shadow-lg`}
-            >
-              <div className="h-1/2 w-full px-5 flex flex-col p-10 font-semibold text-left">
-                <div className='flex gap-5 mb-5'>
-                  <div>popular</div>
-                  <div>best</div>
+      {/* SECTIONS */}
+      <div className="px-6 md:px-20 py-12 space-y-16">
+        {service.sections.map((section, sIdx) => (
+          <div key={sIdx}>
+            <h2 className="text-3xl font-semibold mb-6">{section.heading}</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {section.items.map((item, iIdx) => (
+                <div
+                  key={iIdx}
+                  className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition"
+                >
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-40 object-cover"
+                  />
+                  <div className="p-4">
+                    <h3 className="text-lg font-semibold">{item.name}</h3>
+                    <p className="text-sm text-gray-600 mt-2">{item.description}</p>
+                    <a
+                      href="#"
+                      className="text-indigo-600 text-sm font-medium mt-3 inline-block"
+                    >
+                      View More →
+                    </a>
+                  </div>
                 </div>
-                <h3 className="brico text-4xl mb-2">{tag.name}</h3>
-                <p className="text-sm text-gray-700">{tag.description}</p>
-              </div>
-              <div className="h-1/2 w-full">
-                <img
-                  src={tag.image}
-                  alt={`${service.title} - ${tag.name}`}
-                  className="w-full h-full object-cover rounded-t-3xl"
-                  loading="lazy"
-                />
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
   );
