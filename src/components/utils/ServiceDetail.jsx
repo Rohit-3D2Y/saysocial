@@ -636,95 +636,182 @@ const ServiceDetail = () => {
       : service.sections.filter((section) => section.heading === activeTag);
 
   return (
-    <div className="w-full">
+    <div className="w-full bg-[#f7f3ea] min-h-screen">
       <div
-        className="relative h-[40vh] w-full bg-cover bg-center"
+        className="relative h-[50vh] w-full bg-cover bg-center"
         style={{ backgroundImage: `url(${service.heroImage})` }}
       >
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#101b36]/80 to-[#e86294]/60"></div>
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-6">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 brico tracking-tight">
+          <div className="inline-flex items-center mb-4 bg-white/20 backdrop-blur-sm rounded-full px-6 py-2 text-sm font-semibold">
+            <span className="w-2 h-2 bg-[#e86294] rounded-full mr-2"></span>
             {service.title}
+          </div>
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 brico tracking-tight">
+            Our <span className="text-[#e86294]">Creative</span> Work
           </h1>
-          <p className="max-w-2xl text-lg md:text-xl">{service.description}</p>
-        </div>
-      </div>
-
-      <div className="px-6 md:px-20 py-8 ">
-        <div className="text-left mb-6">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-2 brico tracking-tight text-[#101b36]">
-            Explore Our <span className="text-[#e86294]">{service.title}</span>{" "}
-            Services
-          </h2>
-          <p className="text-gray-600">
-            Click on any service category to filter our work
+          <p className="max-w-3xl text-xl md:text-2xl font-light leading-relaxed">
+            Discover our portfolio of exceptional projects and see how we bring
+            ideas to life
           </p>
         </div>
-        <div className="flex flex-wrap justify-self-end gap-3">
-          <button
-            onClick={() => setActiveTag("All")}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105 ${
-              activeTag === "All"
-                ? "bg-[#e86294] text-white shadow-lg"
-                : "bg-white text-gray-700 border-2 border-gray-300 hover:border-[#e86294] hover:text-[#e86294]"
-            }`}
-          >
-            All
-          </button>
-          {sectionHeadings.map((tag, idx) => (
+      </div>
+
+      <div className="bg-[#f7f3ea] shadow-lg border-b">
+        <div className="max-w-7xl mx-auto px-6 md:px-20 py-8">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 brico tracking-tight text-[#101b36]">
+              Explore by <span className="text-[#e86294]">Category</span>
+            </h2>
+            <p className="text-gray-600 text-lg">
+              Choose a category to see our specialized work
+            </p>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-3">
             <button
-              key={idx}
-              onClick={() => setActiveTag(tag)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105 ${
-                activeTag === tag
-                  ? "bg-[#e86294] text-white shadow-lg"
-                  : "bg-white text-gray-700 border-2 border-gray-300 hover:border-[#e86294] hover:text-[#e86294]"
+              onClick={() => setActiveTag("All")}
+              className={`px-6 py-3 rounded-2xl text-sm font-medium brico tracking-tight transition-all duration-300 ${
+                activeTag === "All"
+                  ? "bg-[#101b36] text-white"
+                  : "bg-white border-2 border-gray-300 text-gray-700 hover:border-[#101b36] hover:text-[#101b36]"
               }`}
             >
-              {tag}
+              Show All
             </button>
-          ))}
+
+            {sectionHeadings.map((tag, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveTag(tag)}
+                className={`px-4 py-3 rounded-2xl text-sm font-medium brico tracking-tight transition-all duration-300 ${
+                  activeTag === tag
+                    ? `${
+                        idx % 2 === 0 ? "bg-[#e86294]" : "bg-[#101b36]"
+                      } text-white`
+                    : `bg-white border-2 border-gray-300 text-gray-700 hover:border-${
+                        idx % 2 === 0 ? "[#e86294]" : "[#101b36]"
+                      } hover:text-${idx % 2 === 0 ? "[#e86294]" : "[#101b36]"}`
+                }`}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
-      <div className="px-6 md:px-20 py-12 space-y-16">
+      <div className="max-w-7xl mx-auto px-6 md:px-20 py-16">
         {filteredSections.map((section, sIdx) => (
-          <div key={sIdx}>
-            <h2 className="text-3xl font-semibold mb-8 brico tracking-tight text-[#101b36]">
-              {section.heading}
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {section.items.map((item, iIdx) => (
+          <div key={sIdx} className="mb-20">
+            <div className="text-center mb-12">
+              <div
+                className={`inline-flex items-center mb-4 ${
+                  sIdx % 2 === 0 ? "bg-[#e86294]" : "bg-[#101b36]"
+                } rounded-full px-4 py-2 text-sm font-semibold text-white`}
+              >
+                <span className="w-2 h-2 bg-white rounded-full mr-2"></span>
+                Portfolio
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 brico tracking-tight text-[#101b36]">
+                {section.heading}
+              </h2>
+              <div
+                className={`w-24 h-1 ${
+                  sIdx % 2 === 0
+                    ? "bg-gradient-to-r from-[#e86294] to-[#d54f7e]"
+                    : "bg-gradient-to-r from-[#101b36] to-[#2a3a5a]"
+                } mx-auto rounded-full`}
+              ></div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {section.items.slice(0, 3).map((item, iIdx) => (
                 <div
                   key={iIdx}
-                  className="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100"
+                  className={`group relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 ${
+                    iIdx === 0 ? "md:col-span-2 md:row-span-2" : ""
+                  }`}
                 >
-                  <div className="relative overflow-hidden">
+                  <div
+                    className={`relative overflow-hidden ${
+                      iIdx === 0 ? "h-96 md:h-[600px]" : "h-80 md:h-72"
+                    }`}
+                  >
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#101b36]/80 via-transparent to-transparent"></div>
+                    <div className="absolute inset-0 bg-[#e86294]/0 group-hover:bg-[#e86294]/20 transition-all duration-300"></div>
                   </div>
-                  <div className="p-4 flex flec-row justify-between">
-                    <div>
-                      <h3 className="text-lg font-semibold mb-2 brico tracking-tight text-[#101b36] group-hover:text-[#e86294] transition-colors duration-300">
+
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                      <h3 className="text-2xl font-bold mb-2 brico tracking-tight">
                         {item.name}
                       </h3>
-                      <p className="text-gray-600 mb-3 text-sm leading-relaxed">
+                      <p className="text-gray-200 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
                         {item.description}
                       </p>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <div className="w-6 h-6 bg-[#e86294] rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-0 group-hover:scale-100 transition-all duration-300">
-                        <i className="fa-solid fa-arrow-right text-white text-xs"></i>
+                      <div className="flex items-center opacity-0 group-hover:opacity-100 transition-all duration-300 delay-200">
+                        <span className="text-sm font-medium mr-2">
+                          View Project
+                        </span>
+                        <div
+                          className={`w-8 h-8 ${
+                            (sIdx + iIdx) % 2 === 0
+                              ? "bg-[#e86294]"
+                              : "bg-[#101b36]"
+                          } rounded-full flex items-center justify-center transform translate-x-2 group-hover:translate-x-0 transition-transform duration-300`}
+                        >
+                          <i className="fa-solid fa-arrow-right text-white text-xs"></i>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
+
+            {section.items.length > 3 && (
+              <div className="mt-12">
+                <h3 className="text-2xl font-semibold mb-6 brico tracking-tight text-[#101b36]">
+                  More from {section.heading}
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {section.items.slice(3).map((item, iIdx) => (
+                    <div
+                      key={iIdx + 3}
+                      className="group bg-[#101b36] rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100"
+                    >
+                      <div className="flex items-center space-x-4">
+                        <div className="relative w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="text-lg font-semibold mb-2 brico tracking-tight text-white group-hover:text-[#e86294] transition-colors duration-300">
+                            {item.name}
+                          </h4>
+                          <p className="text-gray-300 text-sm mb-3">
+                            {item.description}
+                          </p>
+                          <div className="flex items-center text-[#e86294] text-sm font-medium">
+                            <span className="mr-2">Learn More</span>
+                            <i className="fa-solid fa-arrow-right transform transition-transform duration-300 group-hover:translate-x-1"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         ))}
       </div>
