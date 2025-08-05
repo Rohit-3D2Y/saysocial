@@ -155,12 +155,13 @@ export default function ServicesSection() {
                   </span>
                 ))}
               </div>
-              <div
-                className="mt-10 brico tracking-tight items-center bg-[#e86294] cursor-pointer transform transition-transform duration-300 hover:scale-105 text-white text-xl font-medium py-4 px-4 rounded-2xl"
-                onClick={() => navigate(`${service.id}`)}
-              >
-                View Details
-              </div>
+              <a
+  href={`/${service.id}`}
+  className="mt-10 brico tracking-tight items-center bg-[#e86294] cursor-pointer transform transition-transform duration-300 hover:scale-105 text-white text-xl font-medium py-4 px-4 rounded-2xl block text-center"
+>
+  View Details
+</a>
+
             </div>
           ))}
         </div>

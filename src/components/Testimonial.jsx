@@ -84,7 +84,7 @@ const Testimonial = () => {
           <div key={i}
           className={`${t.bg} p-10 rounded-3xl`}
           >
-            <h2 className="brico font-semibold text-lg"><i class="fa-regular fa-comment-dots"></i> {t.review}</h2>
+            <h2 className="brico font-semibold text-lg"><i className="fa-regular fa-comment-dots"></i> {t.review}</h2>
           
           </div>
           <div className="flex justify-center md:justify-start">
