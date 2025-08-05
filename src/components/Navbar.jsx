@@ -21,6 +21,7 @@ const Navbar = () => {
             <a href="#" className="text-gray-700 hover:text-orange-500">About</a>
             <a href="#" className="text-gray-700 hover:text-orange-500">Services</a>
             <a href="#" className="text-gray-700 hover:text-orange-500">Contact</a>
+            <a href="/case-study" className="text-gray-700 hover:text-orange-500">Case Study</a>
           </div>
 
            <div className='hidden md:flex'>
@@ -42,6 +43,7 @@ const Navbar = () => {
           <a href="#" className="block py-2 text-gray-700 hover:text-orange-500">About</a>
           <a href="#" className="block py-2 text-gray-700 hover:text-orange-500">Services</a>
           <a href="#" className="block py-2 text-gray-700 hover:text-orange-500">Contact</a>
+          <a href="/case-study" className="text-gray-700 hover:text-orange-500">Case Study</a>
         </div>
       )}
     </nav>
