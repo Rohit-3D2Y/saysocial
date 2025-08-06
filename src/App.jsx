@@ -19,7 +19,15 @@ import Demo from "./components/Demo";
 import Testimonial from "./components/Testimonial";
 import InstaPostCarousel from "./components/InstaPostCaraousel";
 import Footer from "./components/Footer";
-import ServiceDetail from "./components/utils/ServiceDetail"; // NEW FILE you'll create
+import ServiceDetail from "./components/utils/ServiceDetail";
+import Myexperience from "./components/Myexperience";
+import Journey from './components/Journey';
+import Team from "./components/Team"; 
+import Photos from "./components/Photos"; // Importing the Photos component
+// Importing the Team component
+// Importing the Journey component
+// NEW FILE you'll create
+ // NEW FILE you'll create
 
 const PageWrapper = ({ children }) => {
   const location = useLocation();
@@ -74,6 +82,19 @@ const App = () => {
                 <Navbar />
                 <ServiceDetail />
                 <Footer/>
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <PageWrapper>
+                <Navbar />
+                <Journey />
+                <Myexperience />
+                <Team />
+                <Photos/>
+                <Footer />
               </PageWrapper>
             }
           />
